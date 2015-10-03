@@ -16,10 +16,23 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    contentSecurityPolicy: {
+      'default-src': "'none' *",
+      'script-src': "'self' 'unsafe-eval' *",
+      'font-src': "'self' *",
+      'connect-src': "'self' *",
+      'img-src': "'self' *",
+      'style-src': "'self' 'unsafe-inline' *",
+      'media-src': "'self' *"
     }
   };
 
   if (environment === 'development') {
+    // ENV['simple-auth-token'].serverTokenEndpoint = "192.168.1.137:3000/users";
+    // ENV['simple-auth-token'].serverTokenRefreshEndpoint = "http://papi.accessterminal.com/users/login";
+    ENV.apiURL = 'http://3f6c2de6.ngrok.io';
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;

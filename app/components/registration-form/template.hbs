@@ -1,0 +1,60 @@
+<div class="container register-container row">
+  <p class="login-title">Register</p>
+      {{#validatable-form action="submit" class="form-horizontal clearfix"}}
+
+          <div class="form-group">
+            <label class="col-md-3 control-label">Name</label>
+            <div class="col-md-9 register-input-container">
+              {{input value=name class="form-control" required=true}}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-3 control-label">Email</label>
+                <div class="col-md-9 register-input-container">
+              {{input type="email" value=email class="form-control" required=true}}
+            </div>
+            {{#if emailTaken}}
+              <label class="email-taken">This email is already taken</label>
+            {{else}}
+            {{/if}}
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">Password</label>
+            <div class="col-md-9 register-input-container">
+              {{input focus-in="checkPasswords" focus-out="checkPasswords" type="password" value=password pattern=".{8,}" class="form-control" required=true}}
+            </div>
+            {{#if passwordLength}}
+            {{else}}
+              <label class="password-char-length">Password must be 8 or more characters</label>
+            {{/if}}
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-3 control-label">Confirm password</label>
+            <div class="col-md-9 register-input-container">
+              {{input focus-in="checkPasswords" focus-out="checkPasswords" type="password" value=passwordConfirmation pattern=".{8,}" class="form-control" required=true}}
+            </div>
+            {{#if passwordsMatch}}
+            {{else}}
+              <label class="password-no-match">Passwords do not match</label>
+            {{/if}}
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-3 control-label">Age</label>
+            <div class="col-md-9 register-input-container">
+              {{input value=age class="form-control"}}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-3 control-label">Language</label>
+            <div class="col-md-9 register-input-container">
+              {{input value=language class="form-control"}}
+            </div>
+          </div>
+
+          <button type="submit" class="fading-button">Submit</button>
+      {{/validatable-form}}
+</div>
