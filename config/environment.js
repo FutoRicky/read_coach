@@ -70,6 +70,9 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    ENV['simple-auth-token'].serverTokenEndpoint = "http://readcoach.herokuapp.com/users/sign_in";
+    ENV['simple-auth-token'].serverTokenRefreshEndpoint = "http://readcoach.herokuapp.com/users/sign_in";
+    ENV.apiURL = 'http://readcoach.herokuapp.com';
   }
 
   return ENV;
