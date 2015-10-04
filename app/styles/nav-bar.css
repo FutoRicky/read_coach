@@ -1,8 +1,13 @@
 .navbar {
   border-color: black;
   padding-top: 1%;
-
+  width: 100%;
+  margin-left: 0%;
 }
-.nav-profile{
-  float: right;
+.nav-profile {
+  float: right
+}
+
+.navbar-tab {
+  width: 15%;
 }
