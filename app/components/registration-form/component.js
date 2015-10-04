@@ -99,6 +99,7 @@ export default Ember.Component.extend({
           }
         });
       }
+      this.sendAction('goToMainPage');
     },
     checkPasswords(){
       if( this.passwordConfirmation.length !== 0) {
