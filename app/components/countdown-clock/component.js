@@ -16,15 +16,17 @@ export default Ember.Component.extend({
       this.set('_seconds',s-1);
     }
   },
-  _seconds: 5,
+  _seconds: 20,
   _minutes: 0,
   _hours: 0,
   seconds: Ember.computed('_seconds', function(){
-    let s = this.get('_seconds');
-    if(s === -1) {
-        this.set('_seconds', 59);
+    if (this.runClock) {
+      let s = this.get('_seconds');
+      if(s === -1) {
+          this.set('_seconds', 59);
+      }
+      return this.get('_seconds');
     }
-    return this.get('_seconds');
   }),
   minutes: Ember.computed('_seconds', function(){
       let m =  this.get('_minutes');

@@ -11,6 +11,8 @@ Router.map(function() {
   this.route('main-page', { path: '/'} ,function() {
     this.route('read-test');
     this.route('read-train');
+    this.route('advanced-training');
+    this.route('advanced-test');
   });
   this.route('profile');
 });

@@ -3,12 +3,11 @@ import ajax from 'ic-ajax';
 import ENV from '../../config/environment';
 
 export default Ember.Component.extend({
-  word: null,
+  phrase: null,
   correctCount: 0,
   test: null,
   stop: false,
   answerStatus: null,
-  runClock: false,
 
   didInsertElement() {
       let email = this.session.get('email');
@@ -18,7 +17,7 @@ export default Ember.Component.extend({
         token: token
       };
       ajax({
-        url: `${ENV.apiURL}/test`,
+        url: `${ENV.apiURL}/advanced_test`,
         type: 'GET',
         accept: 'application/json',
         contentType: 'application/json',
@@ -26,24 +25,24 @@ export default Ember.Component.extend({
         data: data
       }).then((res) => {
         this.set('test', res.test);
-        this.set('word', this.test[0]);
+        this.set('phrase', this.test[0].toLowerCase());
       });
     },
 
   actions: {
-    verifyWord(spokenWord) {
+    verifyWord(spokenPhrase) {
       if (!this.stop) {
-        if (spokenWord === this.word) {
+        if (spokenPhrase === this.phrase) {
           if (this.correctCount === this.test.length -1) {
             this.set('correctCount', this.correctCount + 1);
             alert('Awesome Job!');
           }else {
             this.set('answerStatus', 'CORRECT');
             this.set('correctCount', this.correctCount + 1);
-            this.set('word', this.test[this.correctCount]);
+            this.set('phrase', this.test[this.correctCount].toLowerCase());
           }
         } else {
-          this.set('answerStatus', spokenWord + ' IS INCORRECT');
+          this.set('answerStatus', spokenPhrase + ' IS INCORRECT');
         }
       }
     },
@@ -51,11 +50,11 @@ export default Ember.Component.extend({
       this.set('stop', true);
       let email = this.session.get('email');
       let token = this.session.get('token');
-      let wordsRead = this.get('correctCount');
+      let phraseRead = this.get('correctCount');
       let data = {
         email: email,
         token: token,
-        words_read: wordsRead
+        phrase_read: phraseRead
       };
       ajax({
         url: `${ENV.apiURL}/results`,

@@ -1,3 +1,4 @@
+/*global webkitSpeechRecognition*/
 import Ember from 'ember';
 
 export default Ember.Component.extend({
@@ -8,7 +9,7 @@ export default Ember.Component.extend({
 
   startRecognition: function() {
     let speechRecognition = new webkitSpeechRecognition();
-    speechRecognition.lang = 'en';
+    speechRecognition.lang = this.get('language');
     speechRecognition.onresult = Ember.run.bind(this, this.onRecognitionResult);
     speechRecognition.onerror = Ember.run.bind(this, this.onRecognitionError);
     speechRecognition.onend = Ember.run.bind(this, this.onRecognitionEnd);
@@ -42,6 +43,4 @@ export default Ember.Component.extend({
       this.set('enable', true);
     }
   }
-
-
 });
