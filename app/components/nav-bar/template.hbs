@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-1">
+  <div class="col-md-1 col-md-offset-1">
     {{#link-to 'main-page'}}<h4>Main</h4>{{/link-to}}
   </div>
 
@@ -29,50 +29,3 @@
       {{/if}}
   </div>
 </div>
-
-<!-- <nav class="navbar navbar-default navbar-static-top">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-2">
-        {{#link-to 'main-page' class="col-md-1 navbar-tab"}}Main{{/link-to}}
-      </div>
-
-      {{#link-to 'profile' class="col-md-1 navbar-tab"}}
-        <span>
-          Profile
-        </span>
-      {{/link-to}}
-
-      {{#link-to 'main-page.read-train' class="col-md-1 navbar-tab"}}
-        <span>
-          Train
-        </span>
-      {{/link-to}}
-
-      {{#link-to 'main-page.read-test' class="col-md-1 navbar-tab"}}
-        <span>
-          Test
-        </span>
-      {{/link-to}}
-
-      {{#link-to 'main-page.advanced-training' class="col-md-1 navbar-tab"}}
-        <span>
-          Advanced Training
-        </span>
-      {{/link-to}}
-
-      {{#link-to 'main-page.advanced-test' class="col-md-1 navbar-tab"}}
-        <span>
-          Advanced Test
-        </span>
-      {{/link-to}}
-
-      <div class="nav-profile">
-        {{#if session.isAuthenticated}}
-          {{session.name}}
-          <a class="fading-button" href="#" {{action 'invalidateSession'}}>Logout</a>
-        {{/if}}
-      </div>
-    </div>
-  </div>
-</nav> -->
