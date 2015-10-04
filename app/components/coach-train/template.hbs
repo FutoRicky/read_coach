@@ -1,19 +1,16 @@
 {{#if loading}}
-  {{#read-coach-modal}}
-  <div class="modal-container">
-    Creating Training Session...
-  </div>
-  {{/read-coach-modal}}
+  Creating Training Session...
 {{/if}}
-{{correctCount}} Correct
+<h5>{{correctCount}} Correct</h5>
 <img src={{image}}>
 {{#if error}}
-  I did not understand what you said...
+  <h5>I did not understand what you said...</h5>
 {{else}}
-  You said: {{spokenWord}}
+  <h5>You said: {{spokenWord}}</h5>
 {{/if}}
 <br>
-{{word}}
+<h1>{{word}}</h1>
+
 {{speech-recognition
   verifyWord="verifyWord"
   stopSpeechRecognition=stopSpeechRecognition
