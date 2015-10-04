@@ -6,6 +6,11 @@ module.exports = function(environment) {
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
+    sassOptions: {
+      includePaths: [
+        'bower_components/foundation/scss'
+      ]
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -30,25 +35,26 @@ module.exports = function(environment) {
   };
 
   ENV['simple-auth'] = {
-    authorizer: 'simple-auth-authorizer:token'
+    authorizer: 'simple-auth-authorizer:token',
+    crossOriginWhitelist: ['*']
   };
 
   ENV['simple-auth-token'] = {
+    serverTokenEndpoint: 'token',
     identificationField: 'email',
     passwordField: 'password',
-    tokenPropertyName: 'token',
-    authorizationPrefix: 'Bearer ',
-    authorizationHeaderName: 'Authorization',
     refreshAccessTokens: true,
-    timeFactor: 1,
-    refreshLeeway: 0
-    // headers: {},
+    timeFactor: 1000,
+    refreshLeeway: 300,
+    authoizationPrefix: 'Bearer',
+    authorizationHeaderName: 'Authorization',
+    // headers: {}
   };
 
   if (environment === 'development') {
-    ENV['simple-auth-token'].serverTokenEndpoint = "http://a923b0d5.ngrok.io/users/sign_in.json";
-    ENV['simple-auth-token'].serverTokenRefreshEndpoint = "http://a923b0d5.ngrok.io/users/sign_in.json";
-    ENV.apiURL = 'http://a923b0d5.ngrok.io';
+    ENV['simple-auth-token'].serverTokenEndpoint = "http://4c183d81.ngrok.io/users/sign_in";
+    ENV['simple-auth-token'].serverTokenRefreshEndpoint = "http://4c183d81.ngrok.io/users/sign_in";
+    ENV.apiURL = 'http://4c183d81.ngrok.io';
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;

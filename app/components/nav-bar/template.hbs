@@ -24,6 +24,14 @@
           Test
         </span>
       {{/link-to}}
+      
+      <div class="nav-profile">
+        {{#if session.isAuthenticated}}
+          {{session.name}}
+          <a class="fading-button" href="#" {{action 'invalidateSession'}}>Logout</a>
+        {{/if}}
+      </div>
+
     </div>
   </div>
 </div>

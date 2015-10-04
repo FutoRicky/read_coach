@@ -1,9 +1,11 @@
-<h1>Welcome to Read Coach</h1>
+<h1 class="main-header">Welcome to Read Coach</h1>
 
-{{#link-to 'main-page.read-train'}}
-  <button type="button" name="button">Train</button>
-{{/link-to}}
-{{#link-to 'main-page.read-test'}}
-  <button type="button" name="button">Test</button>
-{{/link-to}}
+<div class="train-test-container">
+  {{#link-to 'main-page.read-train'}}
+    <button type="button" name="button">Train</button>
+  {{/link-to}}
+  {{#link-to 'main-page.read-test'}}
+    <button type="button" name="button">Test</button>
+  {{/link-to}}
+</div>
 {{outlet}}

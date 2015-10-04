@@ -4,11 +4,11 @@ export default Ember.Component.extend({
   enable: false,
   speechRecognition: null,
 
-  language: 'es',
+  language: 'en',
 
   startRecognition: function() {
     let speechRecognition = new webkitSpeechRecognition();
-    speechRecognition.lang = 'es';
+    speechRecognition.lang = 'en';
     speechRecognition.onresult = Ember.run.bind(this, this.onRecognitionResult);
     speechRecognition.onerror = Ember.run.bind(this, this.onRecognitionError);
     speechRecognition.onend = Ember.run.bind(this, this.onRecognitionEnd);
@@ -30,7 +30,7 @@ export default Ember.Component.extend({
     let alternativeNo = 0;
 
     result = e.results[resultNo][alternativeNo].transcript;
-    alert(result);
+    this.sendAction('verifyWord', result.toLowerCase());
   },
 
   onEnableChange: Ember.observer('enable', function() {

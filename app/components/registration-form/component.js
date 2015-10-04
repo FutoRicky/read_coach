@@ -73,9 +73,10 @@ export default Ember.Component.extend({
 
       if (this.passwordsMatch) {
         ajax({
-          url: `${ENV.apiURL}/users.json`,
+          url: `${ENV.apiURL}/users`,
           type: 'POST',
           accept: 'application/json',
+          contentType: 'application/json',
           dataType: 'json',
           data: data
         }).then(() => {

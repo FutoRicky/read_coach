@@ -10,9 +10,13 @@
     "ember-qunit": "0.3.3",
     "ember-qunit-notifications": "0.0.7",
     "ember-resolver": "~0.1.15",
-    "jquery": "^1.11.1",
+    "ember-simple-auth": "0.7.3",
+    "foundation": "~5.5.2",
+    "jquery": "^2.1.4",
     "loader.js": "ember-cli/loader.js#3.2.0",
-    "qunit": "~1.17.1",
-    "ember-simple-auth": "0.7.3"
+    "qunit": "~1.17.1"
+  },
+  "resolutions": {
+    "jquery": ">=1.2"
   }
 }
