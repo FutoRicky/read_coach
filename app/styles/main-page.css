@@ -3,5 +3,8 @@
 }
 .train-test-container {
   text-align: center;
-  width: 34%;
+  width: 100%;
+}
+.outlet-container {
+  text-align: center;
 }

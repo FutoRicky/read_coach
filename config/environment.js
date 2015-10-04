@@ -47,9 +47,9 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-    ENV['simple-auth-token'].serverTokenEndpoint = "http://4c183d81.ngrok.io/users/sign_in";
-    ENV['simple-auth-token'].serverTokenRefreshEndpoint = "http://4c183d81.ngrok.io/users/sign_in";
-    ENV.apiURL = 'http://4c183d81.ngrok.io';
+    ENV['simple-auth-token'].serverTokenEndpoint = "http://52168f9f.ngrok.io/users/sign_in";
+    ENV['simple-auth-token'].serverTokenRefreshEndpoint = "http://52168f9f.ngrok.io/users/sign_in";
+    ENV.apiURL = 'http://52168f9f.ngrok.io';
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -70,6 +70,9 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    ENV['simple-auth-token'].serverTokenEndpoint = "http://readcoach.herokuapp.com/users/sign_in";
+    ENV['simple-auth-token'].serverTokenRefreshEndpoint = "http://readcoach.herokuapp.com/users/sign_in";
+    ENV.apiURL = 'http://readcoach.herokuapp.com';
   }
 
   return ENV;

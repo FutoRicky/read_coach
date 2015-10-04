@@ -15,8 +15,7 @@ export default Ember.Component.extend(LoginControllerMixin, {
       let credentials = this.getProperties('identification', 'password');
       this.get('session').authenticate('simple-auth-authenticator:token', credentials)
         .then(() => {
-          this.transitionToRoute('main-page');
-          this.expirationCall();
+          this.transitionTo('main-page');
           }, (error) => {
           this.set('errorMessage', error.error);
         });

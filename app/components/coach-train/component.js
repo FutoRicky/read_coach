@@ -8,33 +8,38 @@ export default Ember.Component.extend({
   training: null,
   image: null,
   stopSpeechRecognition: false,
+  loading: false,
+  spokenWord: null,
+  error: false,
 
   didInsertElement() {
-      let email = this.session.get('email');
-      let token = this.session.get('token');
-      let data = {
-        email: email,
-        token: token
-      };
-      ajax({
-        url: `${ENV.apiURL}/training`,
-        type: 'GET',
-        accept: 'application/json',
-        contentType: 'application/json',
-        dataType: 'json',
-        data: data
-      }).then((res) => {
-        this.set('training', res.training);
-        this.set('word', this.training[0].word);
-        this.set('image', this.training[0].image);
-      });
-    },
+    this.set('loading', true);
+    let email = this.session.get('email');
+    let token = this.session.get('token');
+    let data = {
+      email: email,
+      token: token
+    };
+    ajax({
+      url: `${ENV.apiURL}/training`,
+      type: 'GET',
+      accept: 'application/json',
+      contentType: 'application/json',
+      dataType: 'json',
+      data: data
+    }).then((res) => {
+      this.set('training', res.training);
+      this.set('word', this.training[0].word);
+      this.set('image', this.training[0].image);
+      this.set('loading', false);
+    });
+  },
 
   actions: {
     verifyWord(spokenWord) {
-      Ember.Logger.debug(spokenWord);
+      this.set('spokenWord', spokenWord);
+      this.set('error', false);
       if (spokenWord.toLowerCase() === this.word) {
-        Ember.Logger.debug('correct');
         if (this.correctCount === this.training.length-1) {
           this.set('correctCount', this.correctCount + 1);
           this.set('stopSpeechRecognition', true);
@@ -44,9 +49,10 @@ export default Ember.Component.extend({
           this.set('word', this.training[this.correctCount].word);
           this.set('image', this.training[this.correctCount].image);
         }
-      } else {
-        Ember.Logger.debug('incorrect');
       }
+    },
+    errorOcurred() {
+      this.set('error', true);
     }
   }
 });

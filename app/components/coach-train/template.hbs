@@ -1,4 +1,20 @@
+{{#if loading}}
+  {{#read-coach-modal}}
+  <div class="modal-container">
+    Creating Training Session...
+  </div>
+  {{/read-coach-modal}}
+{{/if}}
 {{correctCount}} Correct
 <img src={{image}}>
+{{#if error}}
+  I did not understand what you said...
+{{else}}
+  You said: {{spokenWord}}
+{{/if}}
+<br>
 {{word}}
-{{speech-recognition verifyWord="verifyWord" stopSpeechRecognition=stopSpeechRecognition}}
+{{speech-recognition
+  verifyWord="verifyWord"
+  stopSpeechRecognition=stopSpeechRecognition
+  errorOcurred="errorOcurred"}}
