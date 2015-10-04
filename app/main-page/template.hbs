@@ -1,22 +1,18 @@
-<h1 class="main-header">Read Coach</h1>
-
-<div class="train-test-container">
-  {{#link-to 'main-page.read-train'}}
-    <button type="button" name="button">Train</button>
-  {{/link-to}}
-
-  {{#link-to 'main-page.read-test'}}
-    <button type="button" name="button">Test</button>
-  {{/link-to}}
-
-  {{#link-to 'main-page.advanced-training'}}
-    <button type="button" name="button">Advanced Training</button>
-  {{/link-to}}
-
-  {{#link-to 'main-page.advanced-test'}}
-    <button type="button" name="button">Advanced Test</button>
-  {{/link-to}}
-</div>
-<div class="outlet-container">
-  {{outlet}}
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <br><br>
+    <div class="jumbotron">
+      <h1 class="main-header">ReadCoach</h1>
+      <br>
+      <center><div class="btn-group" role="group" aria-label="...">
+          <button type="button" class="btn btn-default">{{#link-to 'main-page.read-train'}}Start Training{{/link-to}}</button>
+          <button type="button" class="btn btn-default">{{#link-to 'main-page.read-test'}}Start Test{{/link-to}}</button>
+          <button type="button" class="btn btn-default">{{#link-to 'main-page.advanced-training'}}Start Advanced Training{{/link-to}}</button>
+          <button type="button" class="btn btn-default">{{#link-to 'main-page.advanced-test'}}Start Advanced Test{{/link-to}}</button>
+      </div></center>
+      <div class="outlet-container">
+        {{outlet}}
+      </div>
+    </div>
+  </div>
 </div>
