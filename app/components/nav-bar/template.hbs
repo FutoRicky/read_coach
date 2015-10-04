@@ -1,49 +1,31 @@
-<div class="container-fluid navbar-container">
-  <div class="navbar-wrapper">
-    <div class="col-md-10 col-md-offset-1 navbar">
-      {{#link-to 'main-page' class="col-md-1 navbar-tab"}}
-        <span>
-          Main
-        </span>
-      {{/link-to}}
+<div class="row">
+  <div class="col-md-1 col-md-offset-1">
+    {{#link-to 'main-page'}}<h4>Main</h4>{{/link-to}}
+  </div>
 
-      {{#link-to 'profile' class="col-md-1 navbar-tab"}}
-        <span>
-          Profile
-        </span>
-      {{/link-to}}
+  <div class="col-md-1">
+    {{#link-to 'profile'}}<h4>Profile</h4>{{/link-to}}
+  </div>
 
-      {{#link-to 'main-page.read-train' class="col-md-1 navbar-tab"}}
-        <span>
-          Train
-        </span>
-      {{/link-to}}
+  <div class="col-md-1">
+    {{#link-to 'main-page.read-train'}}<h4>Train</h4>{{/link-to}}
+  </div>
 
-      {{#link-to 'main-page.read-test' class="col-md-1 navbar-tab"}}
-        <span>
-          Test
-        </span>
-      {{/link-to}}
+  <div class="col-md-1">
+    {{#link-to 'main-page.read-test'}}<h4>Test</h4>{{/link-to}}
+  </div>
 
-      {{#link-to 'main-page.advanced-training' class="col-md-1 navbar-tab"}}
-        <span>
-          Advanced Training
-        </span>
-      {{/link-to}}
+  <div class="col-md-1">
+    {{#link-to 'main-page.advanced-training'}}<h4>Intensive Training</h4>{{/link-to}}
+  </div>
 
-      {{#link-to 'main-page.advanced-test' class="col-md-1 navbar-tab"}}
-        <span>
-          Advanced Test
-        </span>
-      {{/link-to}}
+  <div class="col-md-1">
+    {{#link-to 'main-page.advanced-test'}}<h4>Advanced Test</h4>{{/link-to}}
+  </div>
 
-      <div class="nav-profile">
-        {{#if session.isAuthenticated}}
-          {{session.name}}
-          <a class="fading-button" href="#" {{action 'invalidateSession'}}>Logout</a>
-        {{/if}}
-      </div>
-
-    </div>
+  <div class="col-md-2 pull-right">
+    {{#if session.isAuthenticated}}
+        <h4>{{session.name}} <a class="fading-button" href="#" {{action 'invalidateSession'}}>Logout</a></h4>
+      {{/if}}
   </div>
 </div>
