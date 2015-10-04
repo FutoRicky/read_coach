@@ -1,5 +1,14 @@
 {{answerStatus}}
-{{countdown-clock runClock=runClock sendResults="sendResults"}}
+{{countdown-clock countdownReady=countdownReady runClock=runClock sendResults="sendResults"}}
 {{correctCount}} Correct
+{{#if error}}
+  I did not understand what you said...
+{{else}}
+  You said: {{spokenWord}}
+{{/if}}
+<br>
 {{word}}
-{{speech-recognition verifyWord="verifyWord" stopSpeechRecognition=stopSpeechRecognition}}
+{{speech-recognition
+  verifyWord="verifyWord"
+  stopSpeechRecognition=stopSpeechRecognition
+  errorOcurred="errorOcurred"}}
