@@ -1,11 +1,41 @@
-<div class="container-fluid navbar-container">
-  <div class="navbar-wrapper">
-    <div class="col-md-10 col-md-offset-1 navbar">
-      {{#link-to 'main-page' class="col-md-1 navbar-tab"}}
-        <span>
-          Main
-        </span>
-      {{/link-to}}
+<div class="row">
+  <div class="col-md-1">
+    {{#link-to 'main-page'}}<h4>Main</h4>{{/link-to}}
+  </div>
+
+  <div class="col-md-1">
+    {{#link-to 'profile'}}<h4>Profile</h4>{{/link-to}}
+  </div>
+
+  <div class="col-md-1">
+    {{#link-to 'main-page.read-train'}}<h4>Train</h4>{{/link-to}}
+  </div>
+
+  <div class="col-md-1">
+    {{#link-to 'main-page.read-test'}}<h4>Test</h4>{{/link-to}}
+  </div>
+
+  <div class="col-md-1">
+    {{#link-to 'main-page.advanced-training'}}<h4>Intensive Training</h4>{{/link-to}}
+  </div>
+
+  <div class="col-md-1">
+    {{#link-to 'main-page.advanced-test'}}<h4>Advanced Test</h4>{{/link-to}}
+  </div>
+
+  <div class="col-md-2 pull-right">
+    {{#if session.isAuthenticated}}
+        <h4>{{session.name}} <a class="fading-button" href="#" {{action 'invalidateSession'}}>Logout</a></h4>
+      {{/if}}
+  </div>
+</div>
+
+<!-- <nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2">
+        {{#link-to 'main-page' class="col-md-1 navbar-tab"}}Main{{/link-to}}
+      </div>
 
       {{#link-to 'profile' class="col-md-1 navbar-tab"}}
         <span>
@@ -43,7 +73,6 @@
           <a class="fading-button" href="#" {{action 'invalidateSession'}}>Logout</a>
         {{/if}}
       </div>
-
     </div>
   </div>
-</div>
+</nav> -->

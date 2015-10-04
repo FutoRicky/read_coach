@@ -1,0 +1,9 @@
+.auth-container{
+  border-radius: 5px;
+}
+
+.cstm-btn{
+  width: 80% !important;
+  margin-left: 2%;
+  margin-bottom: 5%;
+}
