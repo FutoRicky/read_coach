@@ -41,7 +41,7 @@ export default Ember.Component.extend({
           if (this.correctCount === this.test.length -1) {
             this.set('correctCount', this.correctCount + 1);
             this.set('stopSpeechRecognition', true);
-            alert('Awesome Job!');
+            alert('Time is Up! You got ' + this.get('correctCount') +  'correct!');
           }else {
             this.set('answerStatus', 'CORRECT');
             this.set('correctCount', this.correctCount + 1);
