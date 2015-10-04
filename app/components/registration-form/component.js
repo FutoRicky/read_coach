@@ -78,8 +78,9 @@ export default Ember.Component.extend({
           accept: 'application/json',
           contentType: 'application/json',
           dataType: 'json',
-          data: data
+          data: JSON.stringify(data)
         }).then(() => {
+          this.transitionToRoute('main-page');
           this.setProperties({
             name: null,
             email: null,

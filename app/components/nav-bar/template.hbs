@@ -24,7 +24,19 @@
           Test
         </span>
       {{/link-to}}
-      
+
+      {{#link-to 'main-page.advanced-training' class="col-md-1 navbar-tab"}}
+        <span>
+          Advanced Training
+        </span>
+      {{/link-to}}
+
+      {{#link-to 'main-page.advanced-test' class="col-md-1 navbar-tab"}}
+        <span>
+          Advanced Test
+        </span>
+      {{/link-to}}
+
       <div class="nav-profile">
         {{#if session.isAuthenticated}}
           {{session.name}}

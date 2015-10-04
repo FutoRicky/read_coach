@@ -1,0 +1,7 @@
+{{model.name}}
+{{model.age}}
+{{model.email}}
+{{#each model.evaluations as |evaluation|}}
+  phrases read: {{evaluation.phrase_read}}
+  words read: {{evaluation.words_read}}
+{{/each}}

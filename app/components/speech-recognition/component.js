@@ -1,23 +1,23 @@
+/*global webkitSpeechRecognition*/
 import Ember from 'ember';
 
 export default Ember.Component.extend({
   enable: false,
   speechRecognition: null,
+  stopSpeechRecognition: false,
 
   language: 'en',
 
   startRecognition: function() {
-    let speechRecognition = new webkitSpeechRecognition();
-    speechRecognition.lang = 'en';
-    speechRecognition.onresult = Ember.run.bind(this, this.onRecognitionResult);
-    speechRecognition.onerror = Ember.run.bind(this, this.onRecognitionError);
-    speechRecognition.onend = Ember.run.bind(this, this.onRecognitionEnd);
+    if(!this.stopSpeechRecognition) {
+      let speechRecognition = new webkitSpeechRecognition();
+      speechRecognition.lang = this.get('language');
+      speechRecognition.onresult = Ember.run.bind(this, this.onRecognitionResult);
+      speechRecognition.onerror = Ember.run.bind(this, this.onRecognitionError);
+      // speechRecognition.onend = Ember.run.bind(this, this.onRecognitionEnd);
 
-    speechRecognition.start();
-  },
-
-  onRecognitionEnd: function() {
-    this.set('enable', false);
+      speechRecognition.start();
+    }
   },
 
   onRecognitionError:function() {
@@ -31,6 +31,7 @@ export default Ember.Component.extend({
 
     result = e.results[resultNo][alternativeNo].transcript;
     this.sendAction('verifyWord', result.toLowerCase());
+    this.toggleProperty('enable');
   },
 
   onEnableChange: Ember.observer('enable', function() {
@@ -39,9 +40,7 @@ export default Ember.Component.extend({
 
   actions: {
     toggleEnable() {
-      this.set('enable', true);
+      this.toggleProperty('enable');
     }
   }
-
-
 });

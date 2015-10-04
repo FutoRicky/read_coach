@@ -3,10 +3,9 @@ import ajax from 'ic-ajax';
 import ENV from '../../config/environment';
 
 export default Ember.Component.extend({
-  word: null,
+  phrase: null,
   correctCount: 0,
   training: null,
-  image: null,
   stopSpeechRecognition: false,
 
   didInsertElement() {
@@ -17,7 +16,7 @@ export default Ember.Component.extend({
         token: token
       };
       ajax({
-        url: `${ENV.apiURL}/training`,
+        url: `${ENV.apiURL}/advanced_training`,
         type: 'GET',
         accept: 'application/json',
         contentType: 'application/json',
@@ -25,15 +24,14 @@ export default Ember.Component.extend({
         data: data
       }).then((res) => {
         this.set('training', res.training);
-        this.set('word', this.training[0].word);
-        this.set('image', this.training[0].image);
+        this.set('phrase', this.training[0]);
       });
     },
 
   actions: {
     verifyWord(spokenWord) {
       Ember.Logger.debug(spokenWord);
-      if (spokenWord.toLowerCase() === this.word) {
+      if (spokenWord.toLowerCase() === this.phrase.toLowerCase()) {
         Ember.Logger.debug('correct');
         if (this.correctCount === this.training.length-1) {
           this.set('correctCount', this.correctCount + 1);
@@ -41,8 +39,7 @@ export default Ember.Component.extend({
           alert('awesome job!');
         } else {
           this.set('correctCount', this.correctCount + 1);
-          this.set('word', this.training[this.correctCount].word);
-          this.set('image', this.training[this.correctCount].image);
+          this.set('phrase', this.training[this.correctCount]);
         }
       } else {
         Ember.Logger.debug('incorrect');
