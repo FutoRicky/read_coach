@@ -29,10 +29,26 @@ module.exports = function(environment) {
     }
   };
 
+  ENV['simple-auth'] = {
+    authorizer: 'simple-auth-authorizer:token'
+  };
+
+  ENV['simple-auth-token'] = {
+    identificationField: 'email',
+    passwordField: 'password',
+    tokenPropertyName: 'token',
+    authorizationPrefix: 'Bearer ',
+    authorizationHeaderName: 'Authorization',
+    refreshAccessTokens: true,
+    timeFactor: 1,
+    refreshLeeway: 0
+    // headers: {},
+  };
+
   if (environment === 'development') {
-    // ENV['simple-auth-token'].serverTokenEndpoint = "192.168.1.137:3000/users";
-    // ENV['simple-auth-token'].serverTokenRefreshEndpoint = "http://papi.accessterminal.com/users/login";
-    ENV.apiURL = 'http://3f6c2de6.ngrok.io';
+    ENV['simple-auth-token'].serverTokenEndpoint = "http://a923b0d5.ngrok.io/users/sign_in.json";
+    ENV['simple-auth-token'].serverTokenRefreshEndpoint = "http://a923b0d5.ngrok.io/users/sign_in.json";
+    ENV.apiURL = 'http://a923b0d5.ngrok.io';
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -53,7 +69,6 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
   }
 
   return ENV;

@@ -8,7 +8,7 @@ var Router = Ember.Router.extend({
 Router.map(function() {
   this.route('login');
   this.route('register');
-  this.route('main-page', function() {
+  this.route('main-page', { path: '/'} ,function() {
     this.route('read-test');
     this.route('read-train');
   });

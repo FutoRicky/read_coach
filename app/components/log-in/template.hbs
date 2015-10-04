@@ -1,1 +1,25 @@
-{{yield}}
+<div class="container login-container row">
+  <div class="error-message">{{errorMessage}} &nbsp;</div>
+  <p class="login-title">Login</p>
+  <form class="form-horizontal clearfix" {{action 'authenticate' on='submit'}}>
+    <div class="form-group">
+      <label for="identification" class="col-md-3 control-label">Email</label>
+      <div class="col-md-9">
+        {{input id='identification' placeholder='Enter Login' class="form-control" value=identification}}
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password" class="col-md-3 control-label">Password</label>
+      <div class="col-md-9">
+        {{input id='password' placeholder='Enter Password' type='password' class="form-control" value=password}}
+      </div>
+    </div>
+    <div class="form-group">
+      <button class="fading-button" type="submit">Login</button>
+      {{#link-to 'register'}}
+        <button class="fading-button" type="submit">Register</button>
+      {{/link-to}}
+    </div>
+  </form>
+  {{!-- TODO: Add password recover --}}
+</div>

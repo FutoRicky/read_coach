@@ -73,10 +73,11 @@ export default Ember.Component.extend({
 
       if (this.passwordsMatch) {
         ajax({
-          url: `${ENV.apiURL}/users/sign_up`,
+          url: `${ENV.apiURL}/users.json`,
           type: 'POST',
-          contentType: 'application/json',
-          data: JSON.stringify(data)
+          accept: 'application/json',
+          dataType: 'json',
+          data: data
         }).then(() => {
           this.setProperties({
             name: null,
@@ -84,7 +85,7 @@ export default Ember.Component.extend({
             password: '',
             passwordConfirmation: '',
             age: null,
-            language: 'es',
+            language: '',
             passwordsMatch: true,
             passwordLength: false,
             emailTaken: false
