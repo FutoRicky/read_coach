@@ -7,6 +7,7 @@ export default Ember.Component.extend({
   correctCount: 0,
   training: null,
   image: null,
+  stopSpeechRecognition: false,
 
   didInsertElement() {
       let email = this.session.get('email');
@@ -36,6 +37,7 @@ export default Ember.Component.extend({
         Ember.Logger.debug('correct');
         if (this.correctCount === this.training.length-1) {
           this.set('correctCount', this.correctCount + 1);
+          this.set('stopSpeechRecognition', true);
           alert('awesome job!');
         } else {
           this.set('correctCount', this.correctCount + 1);

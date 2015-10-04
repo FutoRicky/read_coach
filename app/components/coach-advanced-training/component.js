@@ -6,7 +6,7 @@ export default Ember.Component.extend({
   phrase: null,
   correctCount: 0,
   training: null,
-  image: null,
+  stopSpeechRecognition: false,
 
   didInsertElement() {
       let email = this.session.get('email');
@@ -24,7 +24,7 @@ export default Ember.Component.extend({
         data: data
       }).then((res) => {
         this.set('training', res.training);
-        this.set('phrase', this.training[0].phrase);
+        this.set('phrase', this.training[0]);
       });
     },
 
@@ -35,10 +35,11 @@ export default Ember.Component.extend({
         Ember.Logger.debug('correct');
         if (this.correctCount === this.training.length-1) {
           this.set('correctCount', this.correctCount + 1);
+          this.set('stopSpeechRecognition', true);
           alert('awesome job!');
         } else {
           this.set('correctCount', this.correctCount + 1);
-          this.set('phrase', this.training[this.correctCount].phrase);
+          this.set('phrase', this.training[this.correctCount]);
         }
       } else {
         Ember.Logger.debug('incorrect');

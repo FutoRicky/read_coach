@@ -9,6 +9,7 @@ export default Ember.Component.extend({
   stop: false,
   answerStatus: null,
   runClock: false,
+  stopSpeechRecognition: false,
 
   didInsertElement() {
       let email = this.session.get('email');
@@ -36,6 +37,7 @@ export default Ember.Component.extend({
         if (spokenWord === this.word) {
           if (this.correctCount === this.test.length -1) {
             this.set('correctCount', this.correctCount + 1);
+            this.set('stopSpeechRecognition', true);
             alert('Awesome Job!');
           }else {
             this.set('answerStatus', 'CORRECT');
