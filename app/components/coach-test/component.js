@@ -10,6 +10,10 @@ export default Ember.Component.extend({
   answerStatus: null,
   runClock: false,
   stopSpeechRecognition: false,
+  spokenWord: null,
+  error: false,
+  countdownReady: false,
+
 
   didInsertElement() {
       let email = this.session.get('email');
@@ -29,10 +33,13 @@ export default Ember.Component.extend({
         this.set('test', res.test);
         this.set('word', this.test[0]);
       });
+      this.set('countdownReady', true);
     },
 
   actions: {
     verifyWord(spokenWord) {
+      this.set('spokenWord', spokenWord);
+      this.set('error', false);
       if (!this.stop) {
         if (spokenWord === this.word) {
           if (this.correctCount === this.test.length -1) {
@@ -70,6 +77,9 @@ export default Ember.Component.extend({
         this.set('test', res.test);
         this.set('word', this.test[0]);
       });
+    },
+    errorOcurred() {
+      this.set('error', true);
     }
   }
 });
