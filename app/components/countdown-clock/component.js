@@ -16,8 +16,8 @@ export default Ember.Component.extend({
       this.set('_seconds',s-1);
     }
   },
-  _seconds: 20,
-  _minutes: 0,
+  _seconds: 0,
+  _minutes: 1,
   _hours: 0,
   seconds: Ember.computed('_seconds', function(){
     if (this.runClock) {
@@ -55,8 +55,8 @@ export default Ember.Component.extend({
     }
   }),
 
-  didInsertElement() {
+  didInsertElement: Ember.observer('countdownReady', function(){
     this.set('runClock', true);
     this.clockInit();
-  }
+  })
 });

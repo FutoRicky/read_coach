@@ -21,7 +21,7 @@ export default Ember.Component.extend({
   },
 
   onRecognitionError:function() {
-    Ember.Logger.debug('error');
+    this.sendAction('errorOcurred');
   },
 
   onRecognitionResult: function(e) {
@@ -31,11 +31,15 @@ export default Ember.Component.extend({
 
     result = e.results[resultNo][alternativeNo].transcript;
     this.sendAction('verifyWord', result.toLowerCase());
-    this.toggleProperty('enable');
+    if (!this.stopSpeechRecognition) {
+      this.toggleProperty('enable');
+    }
   },
 
   onEnableChange: Ember.observer('enable', function() {
-    this.startRecognition();
+    if (!this.stopSpeechRecognition) {
+      this.startRecognition();
+    }
   }),
 
   actions: {

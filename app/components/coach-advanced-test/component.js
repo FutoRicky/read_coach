@@ -9,6 +9,8 @@ export default Ember.Component.extend({
   stop: false,
   answerStatus: null,
   stopSpeechRecognition: false,
+  spokenPhrase: null,
+  error: false,
 
   didInsertElement() {
       let email = this.session.get('email');
@@ -32,6 +34,8 @@ export default Ember.Component.extend({
 
   actions: {
     verifyWord(spokenPhrase) {
+      this.set('spokenPhrase', spokenPhrase);
+      this.set('error', false);
       if (!this.stop) {
         if (spokenPhrase === this.phrase) {
           if (this.correctCount === this.test.length -1) {
@@ -69,6 +73,9 @@ export default Ember.Component.extend({
         this.set('test', res.test);
         this.set('word', this.test[0]);
       });
+    },
+    errorOcurred() {
+      this.set('error', true);
     }
   }
 });
