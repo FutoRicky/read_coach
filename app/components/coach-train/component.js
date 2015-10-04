@@ -9,6 +9,8 @@ export default Ember.Component.extend({
   image: null,
   stopSpeechRecognition: false,
   loading: false,
+  spokenWord: null,
+  error: false,
 
   didInsertElement() {
     this.set('loading', true);
@@ -35,9 +37,9 @@ export default Ember.Component.extend({
 
   actions: {
     verifyWord(spokenWord) {
-      Ember.Logger.debug(spokenWord);
+      this.set('spokenWord', spokenWord);
+      this.set('error', false);
       if (spokenWord.toLowerCase() === this.word) {
-        Ember.Logger.debug('correct');
         if (this.correctCount === this.training.length-1) {
           this.set('correctCount', this.correctCount + 1);
           this.set('stopSpeechRecognition', true);
@@ -47,9 +49,10 @@ export default Ember.Component.extend({
           this.set('word', this.training[this.correctCount].word);
           this.set('image', this.training[this.correctCount].image);
         }
-      } else {
-        Ember.Logger.debug('incorrect');
       }
+    },
+    errorOcurred() {
+      this.set('error', true);
     }
   }
 });
