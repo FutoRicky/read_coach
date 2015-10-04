@@ -6,6 +6,8 @@ export default Ember.Component.extend({
   word: null,
   correctCount: 0,
   test: null,
+  stop: false,
+  answerStatus: null,
 
   didInsertElement() {
       let email = this.session.get('email');
@@ -29,16 +31,42 @@ export default Ember.Component.extend({
 
   actions: {
     verifyWord(spokenWord) {
-      if (spokenWord === this.word) {
-        if (this.correctCount === this.test.length -1) {
-          alert('Awesome Job!');
-        }else {
-          this.set('correctCount', this.correctCount + 1);
-          this.set('word', this.test[this.correctCount]);
+      if (!this.stop) {
+        if (spokenWord === this.word) {
+          if (this.correctCount === this.test.length -1) {
+            this.set('correctCount', this.correctCount + 1);
+            alert('Awesome Job!');
+          }else {
+            this.set('answerStatus', 'CORRECT');
+            this.set('correctCount', this.correctCount + 1);
+            this.set('word', this.test[this.correctCount]);
+          }
+        } else {
+          this.set('answerStatus', spokenWord + ' IS INCORRECT');
         }
-      } else {
-        alert('WRONG!');
       }
+    },
+    sendResults() {
+      this.set('stop', true);
+      let email = this.session.get('email');
+      let token = this.session.get('token');
+      let wordsRead = this.get('correctCount');
+      let data = {
+        email: email,
+        token: token,
+        words_read: wordsRead
+      };
+      ajax({
+        url: `${ENV.apiURL}/test`,
+        type: 'push',
+        accept: 'application/json',
+        contentType: 'application/json',
+        dataType: 'json',
+        data: data
+      }).then((res) => {
+        this.set('test', res.test);
+        this.set('word', this.test[0]);
+      });
     }
   }
 });
