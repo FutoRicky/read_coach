@@ -80,7 +80,6 @@ export default Ember.Component.extend({
           dataType: 'json',
           data: JSON.stringify(data)
         }).then(() => {
-          this.transitionToRoute('main-page');
           this.setProperties({
             name: null,
             email: null,
