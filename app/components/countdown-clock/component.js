@@ -1,4 +1,3 @@
-/*global FlipClock*/
 import Ember from 'ember';
 
 
@@ -7,15 +6,14 @@ export default Ember.Component.extend({
 
   timer: null,
   didInsertElement() {
-    let countdownTimer = new FlipClock(this.$('#countDowndTimer'));
-    countdownTimer.setOptions({
+    let countdownTimer = this.$('#countDownTimer').FlipClock(60, {
       clockFace: 'MinuteCounter',
-      autoStart: false,
       countdown: true,
       counter: 0
     });
-    countdownTimer.setTime(10);
-    countdownTimer.start();
+    countdownTimer.face.stop = function() {
+      Ember.Logger.debug('time ended');
+    };
     this.set('timer', countdownTimer);
   }
   // runClock: null,
