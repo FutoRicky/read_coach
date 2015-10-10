@@ -17,8 +17,10 @@ var app = new EmberApp();
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
-app.import('bower_components/bootstrap/dist/js/bootstrap.js');
 app.import('bower_components/bootstrap/dist/css/bootstrap.css');
+app.import('bower_components/bootstrap/dist/js/bootstrap.js');
+app.import('bower_components/FlipClock/compiled/flipclock.css');
+app.import('bower_components/FlipClock/compiled/flipclock.js');
 app.import('app/styles/main-page.css');
 app.import('app/styles/nav-bar.css');
 
