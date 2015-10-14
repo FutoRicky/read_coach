@@ -1,16 +1,23 @@
-{{answerStatus}}
-<h3>{{countdown-clock countdownReady=countdownReady runClock=runClock sendResults="sendResults"}}</h3>
-<h5>{{correctCount}} Correct</h5>
-{{#if error}}
-  <h5>I did not understand what you said...</h5>
+{{#if beginTest}}
+  {{answerStatus}}
+  <h3>{{countdown-clock countdownReady=countdownReady runClock=runClock sendResults="sendResults"}}</h3>
+  <h5>{{correctCount}} Correct</h5>
+  {{#if error}}
+    <h5>I did not understand what you said...</h5>
+  {{else}}
+    <h5>You said: {{spokenWord}}</h5>
+  {{/if}}
+  <br>
+  <h1>{{word}}</h1>
+  {{speech-recognition
+    language='es'
+    verifyWord="verifyWord"
+    errorOcurred="errorOcurred"
+    count=correctCount
+    beginTest=beginTest
+    sendResults="sendResults"}}
 {{else}}
-  <h5>You said: {{spokenWord}}</h5>
+  {{#read-coach-modal}}
+    <button type="bn-success" {{action 'beginTest'}}>Begin Test</button>
+  {{/read-coach-modal}}
 {{/if}}
-<br>
-<h1>{{word}}</h1>
-{{speech-recognition
-  language='es'
-  verifyWord="verifyWord"
-  stopSpeechRecognition=stopSpeechRecognition
-  errorOcurred="errorOcurred"
-  count=correctCount}}

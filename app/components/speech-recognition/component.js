@@ -5,6 +5,7 @@ export default Ember.Component.extend({
   enable: false,
   speechRecognition: null,
   stopSpeechRecognition: false,
+  beginTest: false,
 
   language: 'en',
 
@@ -39,6 +40,12 @@ export default Ember.Component.extend({
   onEnableChange: Ember.observer('enable', function() {
     if (!this.stopSpeechRecognition) {
       this.startRecognition();
+    }
+  }),
+
+  beginTestButtonChange: Ember.observer('beginTest', function() {
+    if (this.beginTest) {
+      this.send('toggleEnable');
     }
   }),
 

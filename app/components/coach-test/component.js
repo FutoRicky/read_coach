@@ -9,10 +9,10 @@ export default Ember.Component.extend({
   stop: false,
   answerStatus: null,
   runClock: false,
-  stopSpeechRecognition: false,
   spokenWord: null,
   error: false,
   countdownReady: false,
+  beginTest: false,
 
 
   didInsertElement() {
@@ -22,6 +22,7 @@ export default Ember.Component.extend({
         email: email,
         token: token
       };
+      // Call to get words
       ajax({
         url: `${ENV.apiURL}/test`,
         type: 'GET',
@@ -33,7 +34,6 @@ export default Ember.Component.extend({
         this.set('test', res.test);
         this.set('word', this.test[0]);
       });
-      this.set('countdownReady', true);
     },
 
   actions: {
@@ -44,7 +44,6 @@ export default Ember.Component.extend({
         if (spokenWord === this.word) {
           if (this.correctCount === this.test.length -1) {
             this.set('correctCount', this.correctCount + 1);
-            this.set('stopSpeechRecognition', true);
             alert('Time is Up! You got ' + this.get('correctCount') +  'correct!');
           }else {
             this.set('answerStatus', 'CORRECT');
@@ -74,12 +73,19 @@ export default Ember.Component.extend({
         dataType: 'json',
         data: JSON.stringify(data)
       }).then((res) => {
+        this.set('beginTest', false);
+        Ember.Logger.debug('data sent');
         this.set('test', res.test);
-        this.set('word', this.test[0]);
+        Ember.Logger.debug(res);
+        // this.set('word', this.test[0]);
       });
     },
     errorOcurred() {
       this.set('error', true);
+    },
+    beginTest() {
+      this.set('beginTest', true);
+      this.set('countdownReady', true);
     }
   }
 });

@@ -7,7 +7,6 @@ export default Ember.Component.extend({
   correctCount: 0,
   training: null,
   image: null,
-  stopSpeechRecognition: false,
   loading: false,
   spokenWord: null,
   error: false,
@@ -42,7 +41,6 @@ export default Ember.Component.extend({
       if (spokenWord.toLowerCase() === this.word) {
         if (this.correctCount === this.training.length-1) {
           this.set('correctCount', this.correctCount + 1);
-          this.set('stopSpeechRecognition', true);
           alert('awesome job!');
         } else {
           this.set('correctCount', this.correctCount + 1);
