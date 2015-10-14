@@ -1,28 +1,4 @@
 <div class="row">
-  <div class="col-md-1 col-md-offset-1">
-    {{#link-to 'main-page'}}<h4>Main</h4>{{/link-to}}
-  </div>
-
-  <div class="col-md-1">
-    {{#link-to 'profile'}}<h4>Profile</h4>{{/link-to}}
-  </div>
-
-  <div class="col-md-1">
-    {{#link-to 'main-page.read-train'}}<h4>Train</h4>{{/link-to}}
-  </div>
-
-  <div class="col-md-1">
-    {{#link-to 'main-page.read-test'}}<h4>Test</h4>{{/link-to}}
-  </div>
-
-  <div class="col-md-1">
-    {{#link-to 'main-page.advanced-training'}}<h4>Intensive Training</h4>{{/link-to}}
-  </div>
-
-  <div class="col-md-1">
-    {{#link-to 'main-page.advanced-test'}}<h4>Advanced Test</h4>{{/link-to}}
-  </div>
-
   <div class="col-md-2 pull-right">
     {{#if session.isAuthenticated}}
         <h4>{{session.name}} <a class="fading-button" href="#" {{action 'invalidateSession'}}>Logout</a></h4>
