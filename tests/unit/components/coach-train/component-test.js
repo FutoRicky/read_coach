@@ -3,7 +3,11 @@ import { moduleForComponent, test } from 'ember-qunit';
 moduleForComponent('coach-train', 'Unit | Component | coach train', {
   // Specify the other units that are required for this test
   // needs: ['component:foo', 'helper:bar'],
-  unit: true
+  unit: true,
+  needs: [
+    'component:speech-recognition',
+    'template:components/speech-recognition'
+  ]
 });
 
 test('it renders', function(assert) {

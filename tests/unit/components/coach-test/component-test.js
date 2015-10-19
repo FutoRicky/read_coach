@@ -3,7 +3,11 @@ import { moduleForComponent, test } from 'ember-qunit';
 moduleForComponent('coach-test', 'Unit | Component | coach test', {
   // Specify the other units that are required for this test
   // needs: ['component:foo', 'helper:bar'],
-  unit: true
+  unit: true,
+  needs: [
+    'component:read-coach-modal',
+    'template:components/read-coach-modal'
+  ]
 });
 
 test('it renders', function(assert) {

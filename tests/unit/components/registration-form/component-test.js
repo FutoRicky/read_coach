@@ -3,7 +3,10 @@ import { moduleForComponent, test } from 'ember-qunit';
 moduleForComponent('registration-form', 'Unit | Component | registration form', {
   // Specify the other units that are required for this test
   // needs: ['component:foo', 'helper:bar'],
-  unit: true
+  unit: true,
+  needs: [
+    'component:validatable-form',
+  ]
 });
 
 test('it renders', function(assert) {

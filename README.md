@@ -1,7 +1,7 @@
-# Read-coach
+# Read Coach ( [WIP](http://read-coach.herokuapp.com) )
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+
+ReadCoach is a web app designed to help people learning to read or people that want to improve their reading skills. The user can practice all he/she desires and then put their skills to the test and see their improvement over time. ReadCoach now supports spanish, english and italian.
 
 ## Prerequisites
 
@@ -49,5 +49,4 @@ Specify what it takes to deploy your app.
 * [ember-cli](http://www.ember-cli.com/)
 * Development Browser Extensions
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
-
+  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/

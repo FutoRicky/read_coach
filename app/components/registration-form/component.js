@@ -40,7 +40,7 @@ export default Ember.Component.extend({
 
   actions: {
     submit() {
-      let name = this.get('name');
+
       let email = this.get('email');
       let password = this.get('password');
       let age = this.get('age');
@@ -50,7 +50,7 @@ export default Ember.Component.extend({
       if (!age) {
         data = {
           user: {
-            name: name,
+            name: this.get('name'),
             email: email,
             password: password,
             password_confirmation: password,
@@ -60,12 +60,12 @@ export default Ember.Component.extend({
       } else {
         data = {
           user: {
-            name: name,
+            name: this.get('name'),
             email: email,
             age: age,
             password: password,
             password_confirmation: password,
-            language: 'es'
+            language: language
           }
         };
       }

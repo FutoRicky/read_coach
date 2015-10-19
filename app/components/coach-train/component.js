@@ -13,8 +13,8 @@ export default Ember.Component.extend({
 
   didInsertElement() {
     this.set('loading', true);
-    let email = this.session.get('email');
-    let token = this.session.get('token');
+    let email = this.get('session.email');
+    let token = this.get('session.token');
     let data = {
       email: email,
       token: token

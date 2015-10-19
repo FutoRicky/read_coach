@@ -13,8 +13,8 @@ export default Ember.Component.extend({
   error: false,
 
   didInsertElement() {
-      let email = this.session.get('email');
-      let token = this.session.get('token');
+    let email = this.get('session.email');
+    let token = this.get('session.token');
       let data = {
         email: email,
         token: token
@@ -54,8 +54,8 @@ export default Ember.Component.extend({
     },
     sendResults() {
       this.set('stop', true);
-      let email = this.session.get('email');
-      let token = this.session.get('token');
+      let email = this.get('session.email');
+      let token = this.get('session.email');
       let phraseRead = this.get('correctCount');
       let data = {
         email: email,

@@ -7,7 +7,7 @@ export default Ember.Component.extend({
 
   timer: null,
   didInsertElement() {
-    let countdownTimer = this.$('#countDownTimer').FlipClock(10, {
+    let countdownTimer = this.$('#countDownTimer').FlipClock(60, {
       clockFace: 'MinuteCounter',
       countdown: true,
       counter: 0

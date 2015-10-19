@@ -6,8 +6,8 @@ import ENV from '../../config/environment';
 export default Ember.Component.extend({
   model: null,
   didInsertElement() {
-    let email = this.session.get('email');
-    let token = this.session.get('token');
+    let email = this.get('session.email');
+    let token = this.get('session.token');
     let data = {
       email: email,
       token: token
